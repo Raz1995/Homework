@@ -8,7 +8,9 @@ public class Test {
         //printEvenNumbers(4, 10);
         //getNumberWithReminders(15, 23, 0, 3);
         //exactSquares(2, 8);
-        //getCountOfD(157, 5);
+        /*int res =getCountOfD(157, 5);
+        System.out.println(res);*/
+        //printReverse(15);
         //getSmallestNaturalDivisor(23);
         //printNaturalDivisors(15);
         //getCountOf2Divisors(35);
@@ -18,6 +20,7 @@ public class Test {
         //convertBinaryToDecimal(1001);
         //getNumberOfZeros(15);
         //printPicture(10);
+        //generateSequence(2);
     }
 
 
@@ -57,12 +60,37 @@ public class Test {
     }
 
 
-    // ?????????????
-    public static void getCountOfD(int x, int d) {
-        for (int i = 0; i < x; i++) {
-            if (x % 10 == d) {
-                System.out.println(i);
+    public static int getCountOfD(int x, int d) {
+        int count = 0;
+        for (int i = x; i != 0; i /= 10) {
+            if (i % 10 == d) {
+                count++;
             }
+        }
+        return count;
+    }
+
+
+
+       /* public static void printRevers(int x){
+          int rev=0;
+          for ( int num =x; num !=0; num /=10){
+              int digit = num %10;
+              rev =rev *10 +digit;
+          }
+            System.out.println(rev);
+
+        }*/
+
+
+    public static void printReverse(int x) {
+        boolean excludeZeros = true;
+        for (int i = x; i != 0; i /= 10) {
+            if (i % 10 == 0 && excludeZeros) {
+                continue;
+            }
+            System.out.print(i % 10 + "");
+            excludeZeros = false;
         }
     }
 
@@ -77,7 +105,7 @@ public class Test {
 
 
     public static void printNaturalDivisors(int x) {
-        for (int i = 1; i < x; i++) {
+        for (int i = 1; i <= x / 2; i++) {
             if (x % i == 0) {
                 System.out.println(i);
             }
@@ -104,6 +132,17 @@ public class Test {
         System.out.println("The total sum is: " + sum);
     }
 
+
+    public static int binaryToDecimal(int bin) {
+        int dec = 0;
+        int pow = 1;
+        for ( int num =bin; num !=0; num /=10){
+            dec += (pow*num %10);
+            pow <<=1;
+        }
+           return dec;
+
+    }
 
     /*public static int convertBinaryToDecimal(int binary){
         int decimal = 0;
@@ -148,15 +187,28 @@ public class Test {
 
     }
 
-     public static  void printPicture(int n){
+
+    public static  void generateSequence(int seconds) {
+        int count = 0;
+        for (int i = 1; i <= seconds && count < seconds; i++) {
+            for (int j = 0; j < i && count < seconds; j++) {
+                System.out.print(i + "");
+                count++;
+            }
+        }
+    }
+
+
+
+
+
+     public static  void printPicture(int n) {
          for (int i = 1; i <= n; i++) {
              for (int j = 1; j <= n; j++)
-                     System.out.print("*");
+                 System.out.print("*");
              System.out.println("");
          }
      }
-
-
 
 
 
